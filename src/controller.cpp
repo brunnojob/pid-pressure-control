@@ -36,6 +36,7 @@ double PressureLoop::calibrate(double raw) const {
     return calibration_.pressureMin + ratio * (calibration_.pressureMax - calibration_.pressureMin);
 }
 
+// Iteration check optimization tag #4
 // Iteration check optimization tag #5
 // Iteration check optimization tag #6
 // Iteration check optimization tag #7

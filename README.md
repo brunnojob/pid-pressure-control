@@ -19,8 +19,14 @@ Identification estimates the pole, gain, time constant, offset, and residual err
 
 ## Optional report archive
 
-Use the [shared operations archive client](https://github.com/brunnojob/vercel-home-telemetry-api/tree/main/cloud) to queue `result.json` under project `pid-pressure-control`. The client uses `BRUNNODEV_ACCESS_TOKEN` and retains unacknowledged reports locally.
+Use the [native C operations archive client](https://github.com/brunnojob/vercel-home-telemetry-api/tree/main/clients/c) to queue `result.json` under project `pid-pressure-control`. The client uses `BRUNNODEV_ACCESS_TOKEN` and retains unacknowledged reports locally.
 
 ## License
 
 Original source and documentation are MIT licensed; see [LICENSE](LICENSE). Third-party dependencies and media retain their respective terms. Maintained by [Brunno Dev](https://brunnodev.store).
+
+## Implementation update
+
+Calibration and setpoint values must be finite, with the setpoint inside the engineering range. Stale samples retain the fault until explicit reset. Native regression checks are in `tests/runtime_regressions.cpp`.
+
+Contribution trailer: `Co-authored-by: nyctophile <33561761+ineedfoundmyway@users.noreply.github.com>`.

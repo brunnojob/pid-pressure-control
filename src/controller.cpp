@@ -8,8 +8,12 @@ PressureLoop::PressureLoop(Calibration calibration, PidConfig pid,
                            double setpoint, std::uint64_t maxAgeMs)
     : calibration_(calibration), pid_(pid), setpoint_(setpoint),
       maxAgeMs_(maxAgeMs) {
-  if (calibration_.rawMin >= calibration_.rawMax ||
-      calibration_.pressureMin >= calibration_.pressureMax || maxAgeMs_ == 0)
+  if (!std::isfinite(calibration_.rawMin) || !std::isfinite(calibration_.rawMax) ||
+      !std::isfinite(calibration_.pressureMin) || !std::isfinite(calibration_.pressureMax) ||
+      !std::isfinite(setpoint_) ||
+      calibration_.rawMin >= calibration_.rawMax ||
+      calibration_.pressureMin >= calibration_.pressureMax || maxAgeMs_ == 0 ||
+      setpoint_ < calibration_.pressureMin || setpoint_ > calibration_.pressureMax)
     throw std::invalid_argument("invalid_sensor_calibration");
 }
 

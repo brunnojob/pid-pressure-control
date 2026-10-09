@@ -1,0 +1,11 @@
+name: Native regressions
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: g++ -std=c++17 -Wall -Wextra -Werror -pthread -Iinclude tests/runtime_regressions.cpp src/controller.cpp src/pid.cpp -o /tmp/runtime-regressions && /tmp/runtime-regressions

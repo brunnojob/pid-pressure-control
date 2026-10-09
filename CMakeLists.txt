@@ -11,3 +11,10 @@ enable_testing()
 add_executable(pid_tests tests/pid_test.cpp)
 target_link_libraries(pid_tests PRIVATE pressure_control)
 add_test(NAME pid_tests COMMAND pid_tests)
+
+add_executable(identification_test tests/identification_test.cpp)
+target_include_directories(identification_test PRIVATE include)
+add_test(NAME identification COMMAND identification_test)
+
+add_executable(identify_process app/identify.cpp)
+target_include_directories(identify_process PRIVATE include)

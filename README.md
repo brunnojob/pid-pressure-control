@@ -19,7 +19,7 @@ Identification estimates the pole, gain, time constant, offset, and residual err
 
 ## Optional report archive
 
-Export a JSON report from the command above, then run `python cloud/sync.py enqueue result.json --project pid-pressure-control` and `python cloud/sync.py sync`. Synchronization requires `BRUNNODEV_ACCESS_TOKEN` and the external operations API; the local outbox retains unacknowledged reports.
+Use the [shared operations archive client](https://github.com/brunnojob/vercel-home-telemetry-api/tree/main/cloud) to queue `result.json` under project `pid-pressure-control`. The client uses `BRUNNODEV_ACCESS_TOKEN` and retains unacknowledged reports locally.
 
 ## License
 

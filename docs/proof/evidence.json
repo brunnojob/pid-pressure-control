@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "repository": "brunnojob/pid-pressure-control",
+  "source_commit": "381c208bbfb9a52b68c057309241700c260c5714",
+  "generated_at": "2026-10-10T02:34:56.997744+00:00",
+  "run_url": "https://github.com/brunnojob/pid-pressure-control/actions/runs/38017486752",
+  "inputs_sha256": {
+    ".proof/scenarios.json": "830f5776ebc3d5fa2287b8c2b692a0f7d2d05cee4f6b3b02be8a0df7d570b292"
+  },
+  "cases": [
+    {
+      "display": false,
+      "name": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.351,
+      "output": "-- The CXX compiler identification is GNU 13.3.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.3s)\n-- Generating done (0.0s)\n-- Build files have been written to: /home/runner/work/pid-pressure-control/pid-pressure-control/build\n",
+      "output_sha256": "528feee61a8773cb36c3f9784a4e9ae1e189301be8bbe6c92c9ee3570b520580"
+    },
+    {
+      "display": false,
+      "name": "cmake --build build --parallel 2",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "cmake --build build --parallel 2"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 1.555,
+      "output": "[  9%] Building CXX object CMakeFiles/identification_test.dir/tests/identification_test.cpp.o\n[ 18%] Building CXX object CMakeFiles/pressure_control.dir/src/pid.cpp.o\n[ 27%] Building CXX object CMakeFiles/pressure_control.dir/src/controller.cpp.o\n[ 36%] Linking CXX executable identification_test\n[ 36%] Built target identification_test\n[ 45%] Building CXX object CMakeFiles/identify_process.dir/app/identify.cpp.o\n[ 54%] Linking CXX static library libpressure_control.a\n[ 63%] Linking CXX executable identify_process\n[ 63%] Built target identify_process\n[ 63%] Built target pressure_control\n[ 72%] Building CXX object CMakeFiles/pid_tests.dir/tests/pid_test.cpp.o\n[ 81%] Building CXX object CMakeFiles/pressure_demo.dir/app/main.cpp.o\n[ 90%] Linking CXX executable pressure_demo\n[100%] Linking CXX executable pid_tests\n[100%] Built target pressure_demo\n[100%] Built target pid_tests\n",
+      "output_sha256": "91138970d0592b04ffa0cc85611b8f6f4f667fbedd18d86398ee01b6fbe17afa"
+    },
+    {
+      "display": true,
+      "name": "ctest --test-dir build --output-on-failure",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "ctest --test-dir build --output-on-failure"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.451,
+      "output": "Internal ctest changing into directory: /home/runner/work/pid-pressure-control/pid-pressure-control/build\nTest project /home/runner/work/pid-pressure-control/pid-pressure-control/build\n    Start 1: pid_tests\n1/2 Test #1: pid_tests ........................   Passed    0.00 sec\n    Start 2: identification\n2/2 Test #2: identification ...................   Passed    0.00 sec\n\n100% tests passed, 0 tests failed out of 2\n\nTotal Test time (real) =   0.05 sec\n",
+      "output_sha256": "395ab29b88a84eda4c6293d35a7abf7625843ea4b27d9a1f2397190a3eb7be69"
+    },
+    {
+      "display": true,
+      "name": "Run pressure-loop normalization and bounded valve output",
+      "argv": [
+        "build/pressure_demo"
+      ],
+      "exit": 0,
+      "expected_exit": 0,
+      "passed": true,
+      "seconds": 0.051,
+      "output": "1,98.9011,39.033\n2,100.122,37.1507\n3,101.343,35.5843\n4,102.564,34.1243\n5,103.785,32.6777\n6,105.006,31.2031\n7,106.227,29.6822\n8,107.448,28.1067\n9,108.669,26.4732\n10,109.89,24.7798\n11,111.111,23.026\n12,112.332,21.2114\n13,113.553,19.3358\n14,114.774,17.3993\n15,115.995,15.4017\n16,117.216,13.3431\n17,118.437,11.2234\n18,119.658,9.04274\n19,120.879,6.80098\n20,122.1,4.49817\n",
+      "output_sha256": "2d629d388dd1e19bdad464b5fefc699a192bc1ba1c6e65d866ecf58dc903f5fb"
+    }
+  ],
+  "passed": true
+}

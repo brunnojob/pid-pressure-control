@@ -1,0 +1,62 @@
+$ bash -e -o pipefail -c cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/runner/work/pid-pressure-control/pid-pressure-control/build
+
+$ bash -e -o pipefail -c cmake --build build --parallel 2
+[  9%] Building CXX object CMakeFiles/identification_test.dir/tests/identification_test.cpp.o
+[ 18%] Building CXX object CMakeFiles/pressure_control.dir/src/pid.cpp.o
+[ 27%] Building CXX object CMakeFiles/pressure_control.dir/src/controller.cpp.o
+[ 36%] Linking CXX executable identification_test
+[ 36%] Built target identification_test
+[ 45%] Building CXX object CMakeFiles/identify_process.dir/app/identify.cpp.o
+[ 54%] Linking CXX static library libpressure_control.a
+[ 63%] Linking CXX executable identify_process
+[ 63%] Built target identify_process
+[ 63%] Built target pressure_control
+[ 72%] Building CXX object CMakeFiles/pid_tests.dir/tests/pid_test.cpp.o
+[ 81%] Building CXX object CMakeFiles/pressure_demo.dir/app/main.cpp.o
+[ 90%] Linking CXX executable pressure_demo
+[100%] Linking CXX executable pid_tests
+[100%] Built target pressure_demo
+[100%] Built target pid_tests
+
+$ bash -e -o pipefail -c ctest --test-dir build --output-on-failure
+Internal ctest changing into directory: /home/runner/work/pid-pressure-control/pid-pressure-control/build
+Test project /home/runner/work/pid-pressure-control/pid-pressure-control/build
+    Start 1: pid_tests
+1/2 Test #1: pid_tests ........................   Passed    0.00 sec
+    Start 2: identification
+2/2 Test #2: identification ...................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.05 sec
+
+$ build/pressure_demo
+1,98.9011,39.033
+2,100.122,37.1507
+3,101.343,35.5843
+4,102.564,34.1243
+5,103.785,32.6777
+6,105.006,31.2031
+7,106.227,29.6822
+8,107.448,28.1067
+9,108.669,26.4732
+10,109.89,24.7798
+11,111.111,23.026
+12,112.332,21.2114
+13,113.553,19.3358
+14,114.774,17.3993
+15,115.995,15.4017
+16,117.216,13.3431
+17,118.437,11.2234
+18,119.658,9.04274
+19,120.879,6.80098
+20,122.1,4.49817

@@ -10,8 +10,8 @@ $ bash -e -o pipefail -c cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 -- Build files have been written to: /home/runner/work/pid-pressure-control/pid-pressure-control/build
 
 $ bash -e -o pipefail -c cmake --build build --parallel 2
-[  9%] Building CXX object CMakeFiles/identification_test.dir/tests/identification_test.cpp.o
-[ 18%] Building CXX object CMakeFiles/pressure_control.dir/src/pid.cpp.o
+[  9%] Building CXX object CMakeFiles/pressure_control.dir/src/pid.cpp.o
+[ 18%] Building CXX object CMakeFiles/identification_test.dir/tests/identification_test.cpp.o
 [ 27%] Building CXX object CMakeFiles/pressure_control.dir/src/controller.cpp.o
 [ 36%] Linking CXX executable identification_test
 [ 36%] Built target identification_test
@@ -20,8 +20,8 @@ $ bash -e -o pipefail -c cmake --build build --parallel 2
 [ 63%] Linking CXX executable identify_process
 [ 63%] Built target identify_process
 [ 63%] Built target pressure_control
-[ 72%] Building CXX object CMakeFiles/pid_tests.dir/tests/pid_test.cpp.o
-[ 81%] Building CXX object CMakeFiles/pressure_demo.dir/app/main.cpp.o
+[ 72%] Building CXX object CMakeFiles/pressure_demo.dir/app/main.cpp.o
+[ 81%] Building CXX object CMakeFiles/pid_tests.dir/tests/pid_test.cpp.o
 [ 90%] Linking CXX executable pressure_demo
 [100%] Linking CXX executable pid_tests
 [100%] Built target pressure_demo
@@ -37,7 +37,7 @@ Test project /home/runner/work/pid-pressure-control/pid-pressure-control/build
 
 100% tests passed, 0 tests failed out of 2
 
-Total Test time (real) =   0.05 sec
+Total Test time (real) =   0.06 sec
 
 $ build/pressure_demo
 1,98.9011,39.033

@@ -1,0 +1,57 @@
+{
+  "repository": "brunnojob/pid-pressure-control",
+  "inputs": [
+    ".proof/scenarios.json"
+  ],
+  "cases": [
+    {
+      "name": "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug"
+      ],
+      "timeout": 900,
+      "display": false
+    },
+    {
+      "name": "cmake --build build --parallel 2",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "cmake --build build --parallel 2"
+      ],
+      "timeout": 900,
+      "display": false
+    },
+    {
+      "name": "ctest --test-dir build --output-on-failure",
+      "argv": [
+        "bash",
+        "-e",
+        "-o",
+        "pipefail",
+        "-c",
+        "ctest --test-dir build --output-on-failure"
+      ],
+      "timeout": 900,
+      "display": true
+    },
+    {
+      "name": "Run pressure-loop normalization and bounded valve output",
+      "argv": [
+        "build/pressure_demo"
+      ],
+      "contains": [
+        "20,"
+      ],
+      "timeout": 120
+    }
+  ]
+}

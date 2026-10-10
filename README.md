@@ -29,7 +29,7 @@ Original source and documentation are MIT licensed; see [LICENSE](LICENSE). Thir
 
 Calibration and setpoint values must be finite, with the setpoint inside the engineering range. Stale samples retain the fault until explicit reset. Native regression checks are in `tests/runtime_regressions.cpp`.
 
-Contribution trailer: `Co-authored-by: nyctophile <329826984+ineedfoundmyway@users.noreply.github.com>`.
+Contribution trailer: `Co-authored-by: nyctophile <33561761+ineedfoundmyway@users.noreply.github.com>`.
 
 ## Execution proof
 

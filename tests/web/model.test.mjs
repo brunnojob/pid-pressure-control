@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {PID,Simulation} from '../../web/model.mjs';
+import {messages} from '../../web/i18n.mjs';
+import {readFileSync} from 'node:fs';
+test('PID matches the first C++ calculation and rejects invalid timing',()=>{const pid=new PID();assert.equal(pid.update(120,100,.1),37);assert.throws(()=>pid.update(120,100,0));assert.throws(()=>pid.update(NaN,100,.1));});
+test('saturation does not wind up the integral',()=>{const pid=new PID();for(let i=0;i<100;i++)assert.equal(pid.update(250,0,.1),100);assert.equal(pid.integral,0);});
+test('simulated loop remains finite and bounded with disturbance and changed target',()=>{const sim=new Simulation();for(let i=0;i<1500;i++){if(i===200)sim.load=30;if(i===500)sim.setpoint=200;if(i===1000)sim.setpoint=0;sim.step();assert.ok(Number.isFinite(sim.pressure));assert.ok(sim.pressure>=0&&sim.pressure<=250);assert.ok(sim.valve>=0&&sim.valve<=100);}assert.equal(sim.history.length,600);});
+test('faults remain latched with zero output until reset',()=>{const sim=new Simulation();sim.step();sim.trip('stale');for(let i=0;i<20;i++)sim.step();assert.equal(sim.valve,0);assert.equal(sim.fault,'stale');sim.clearFault();sim.step();assert.ok(sim.valve>0);sim.reset();assert.equal(sim.pressure,40);assert.equal(sim.time,0);assert.equal(sim.history.length,1);});
+test('both languages cover every static and dynamic interface key',()=>{assert.deepEqual(Object.keys(messages.pt).sort(),Object.keys(messages.en).sort());const html=readFileSync(new URL('../../web/index.html',import.meta.url),'utf8');for(const match of html.matchAll(/data-i18n="([^"]+)"/g))for(const lang of ['pt','en'])assert.ok(messages[lang][match[1]],`${lang}: ${match[1]}`);for(const lang of ['pt','en'])for(const value of Object.values(messages[lang]))assert.ok(typeof value==='string'&&value.length>0);});

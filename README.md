@@ -1,5 +1,9 @@
 # Pressure Control
 
+[Interactive pressure lab — Português / English](https://brunnojob.github.io/pid-pressure-control/)
+
+The GitHub Pages lab reproduces the PID calculation in JavaScript with an illustrative first-order plant. Tune gains, inject load disturbances or sensor faults, and export the chart data as CSV. All interface text, explanations, statuses and exports follow the selected PT-BR or English language. Public repository metadata is fetched from the GitHub API without authentication. The demo does not run the native C++ binary or control real hardware.
+
 [View execution evidence](https://brunnojob.github.io/devstart-lab/proofs/pid-pressure-control/)
 
 A PID controller with interlocks and first-order model identification from process measurements.
